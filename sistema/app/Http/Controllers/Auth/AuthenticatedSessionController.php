@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
 
 if ($user->cliente) {
 
-    return redirect('/cliente/dashboard');
+    return redirect('/');
 }
 
 return redirect('/');

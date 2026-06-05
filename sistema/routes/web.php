@@ -33,9 +33,17 @@ Route::get('/reportes', function () {
 
 Route::get('/', [SeguimientoController::class,'index']);
 
-Route::get('/crear', [SeguimientoController::class,'create']);
+Route::middleware(['auth', 'cliente'])->group(function () {
 
-Route::post('/guardar', [SeguimientoController::class,'store']);
+    Route::get('/crear',
+        [SeguimientoController::class,'create'])
+        ->name('seguimientos.create');
+
+    Route::post('/guardar',
+        [SeguimientoController::class,'store'])
+        ->name('seguimientos.store');
+
+});
 
 Route::delete('/eliminar/{id}', [SeguimientoController::class,'destroy']);
 
@@ -63,31 +71,7 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/cliente/dashboard', function () {
 
-    return view('cliente.dashboard');
-
-})->middleware('auth');
-
-
-Route::get('/admin/dashboard', function () {
-
-    return view('admin/dashboard');
-
-})->middleware('auth');
-
-Route::middleware(['auth', 'cliente'])->group(function () {
-    
-    Route::get('/cliente/dashboard', function () {
-        return view('cliente.dashboard');
-    })->name('cliente.dashboard');
-
-    // Más adelante aquí irán las rutas para:
-    // - Crear seguimiento de mascota perdida
-    // - Ver historial de reportes
-    // - Actualizar información del animal
-
-});
 
 
 

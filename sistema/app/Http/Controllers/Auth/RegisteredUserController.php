@@ -86,9 +86,9 @@ class RegisteredUserController extends Controller
         'direccion_cliente' => $request->direccion_cliente,
     ]);
 
-    Auth::login($user);
+   Auth::login($user);
 
-    return redirect('/cliente/dashboard');
+return redirect('/');
 }
 
-}
+}   

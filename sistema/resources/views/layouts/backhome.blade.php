@@ -91,13 +91,54 @@ Encuentra mascotas perdidas o ayúdalas a volver a casa
 🏠 Inicio
 </a>
 
-<a href="/login">
-🐾 Crear Reporte
+@auth
+
+<a href="/crear" class="btn btn-success">
+    🐾 Crear Seguimiento
 </a>
 
-<a href="/register">
-🔐 Resgistrate
+@endauth
+ @guest
+
+<p>
+    Debes iniciar sesión para crear un seguimiento.
+</p>
+
+<a href="{{ route('login') }}">
+    Iniciar Sesión
 </a>
+
+@endguest
+
+
+@auth
+
+    <a href="{{ route('profile.edit') }}">
+    👤 Mi Cuenta
+</a>
+
+@endauth
+
+@guest
+
+    <a href="{{ route('register') }}">
+        Registrarse
+    </a>
+
+@endguest
+ 
+@auth
+
+<form action="{{ route('logout') }}" method="POST">
+    @csrf
+
+    <button type="submit">
+        Cerrar Sesión
+    </button>
+</form>
+
+@endauth
+
 
 </nav>
 
