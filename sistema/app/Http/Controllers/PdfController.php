@@ -2,9 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Seguimiento;
 
 class PdfController extends Controller
 {
-    //
+    public function descargar()
+    {
+        $seguimientos = Seguimiento::all();
+
+        $pdf = Pdf::loadView(
+            'pdf.reportes',
+            compact('seguimientos')
+        );
+
+        return $pdf->download('reportes_animales.pdf');
+    }
 }

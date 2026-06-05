@@ -82,6 +82,11 @@ Encuentra mascotas perdidas o ayúdalas a volver a casa
 
 <nav>
 
+<a href="{{ route('descargar.reportes') }}"
+   class="btn btn-danger">
+   📄 Descargar Reportes de Animales
+</a>
+
 <a href="/">
 🏠 Inicio
 </a>

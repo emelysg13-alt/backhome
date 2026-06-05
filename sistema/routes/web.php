@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\PdfController;
 
+
+Route::get('/descargar-reportes', [PdfController::class, 'descargar'])
+    ->name('descargar.reportes');
 
 
 //ADMINISTRADOR
