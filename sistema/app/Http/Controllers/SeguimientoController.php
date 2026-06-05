@@ -94,3 +94,10 @@ class SeguimientoController extends Controller
     }
 }
 
+
+
+
+$seguimientos = Seguimiento::orderBy(
+    'fecha_publicacion',
+    'desc'
+)->get();
